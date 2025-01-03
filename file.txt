@@ -1,0 +1,17 @@
+usermodel
+full name - string
+email - string
+password - string
+card - array
+isAdmin - boolean
+orders - array
+contact - number
+picture - string
+
+
+
+product
+image
+name
+price
+discount
