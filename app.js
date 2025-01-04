@@ -1,7 +1,11 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 const cookieParser = require('cookie-parser');
+const path = require("path");
+const db = require("./config/mongoose-connection");
+const ownersRouter = require('./routes/ownersRouter');
+const usersRouter = require('./routes/usersRouter');
+const productsRouter = require('./routes/productsRouter');
 
 
 // middlewares
@@ -12,8 +16,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
 
 
-app.get("/", function (req, res) {
-    res.send("Hey");
-})
+// Routes
+
+app.use("/owners", ownersRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
+
+
 
 app.listen(3000);
