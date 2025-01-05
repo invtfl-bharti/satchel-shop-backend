@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 
 // Routes
 
-app.use("/owners", ownersRouter);
+app.use("/", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
