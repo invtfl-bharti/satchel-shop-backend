@@ -7,6 +7,7 @@ const ownersRouter = require('./routes/ownersRouter');
 const usersRouter = require('./routes/usersRouter');
 const productsRouter = require('./routes/productsRouter');
 
+require("dotenv").config();
 
 // middlewares
 app.use(express.json());
@@ -19,8 +20,8 @@ app.set("view engine", "ejs");
 // Routes
 
 app.use("/", ownersRouter);
-app.use("/users", usersRouter);
-app.use("/products", productsRouter);
+app.use("/", usersRouter);
+app.use("/", productsRouter);
 
 
 
