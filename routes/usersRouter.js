@@ -8,6 +8,7 @@ const { registerUser } = require("../controllers/authController");
 
 router.get("/", function (req, res) {
   res.send("It's working");
+  
 });
 
 router.post("/register", registerUser);
