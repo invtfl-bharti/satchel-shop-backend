@@ -8,6 +8,7 @@ const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
 const expressSession = require("express-session");
 const flash = require("connect-flash");
+const indexRouter = require("./routes/index");
 
 require("dotenv").config();
 
@@ -17,20 +18,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   expressSession({
+    secret: process.env.JWT_KEY, // Ensure this is properly set
     resave: false,
-    saveUninitialized: false,
-    secret: process.env.EXPRESS_SESSION_SECRET,
+    saveUninitialized: true,
+    cookie: { secure: false },
   })
 );
 
 app.use(flash());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 app.set("view engine", "ejs");
+app.set("views", __dirname + "/views");
 
 // Routes
 
-app.use("/", ownersRouter);
-app.use("/", usersRouter);
-app.use("/", productsRouter);
+app.use("/owners", ownersRouter);
+app.use("/user", usersRouter);
+app.use("/producrs", productsRouter);
+app.use("/", indexRouter);
 
 app.listen(3000);

@@ -13,6 +13,7 @@ module.exports = async function (req, res, next) {
 
         req.user = user;
         next();
+         res.redirect("/login");
     }
     catch (err) {
         req.flash("error", "something went wrong");
