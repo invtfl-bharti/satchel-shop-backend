@@ -17,8 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
+  "/satchel-shop-backend",
+  express.static(path.join(__dirname, "public"))
+);
+app.use(
   expressSession({
-    secret: process.env.JWT_KEY, // Ensure this is properly set
+    secret: process.env.JWT_KEY, 
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
@@ -33,8 +37,8 @@ app.set("views", __dirname + "/views");
 // Routes
 
 app.use("/owners", ownersRouter);
-app.use("/user", usersRouter);
-app.use("/producrs", productsRouter);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 app.use("/", indexRouter);
 
 app.listen(3000);

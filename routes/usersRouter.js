@@ -6,6 +6,9 @@ const jwt = require("jsonwebtoken");
 const { generateToken } = require('../utils/generateToken');
 const { registerUser } = require("../controllers/authController");
 const { loginUser } = require('../controllers/authController');
+const isLoggedIn = require('../middlewares/isLoggedIn')
+const { logout } = require('../controllers/authController');
+
 
 
 router.get("/", function (req, res) {
@@ -16,6 +19,8 @@ router.get("/", function (req, res) {
 router.post("/register", registerUser);
 
 router.post("/login", loginUser);
+
+router.get("/logout", logout);
 
 
 module.exports = router;
