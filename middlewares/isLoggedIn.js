@@ -9,11 +9,11 @@ module.exports = async function (req, res, next) {
 
     try {
         let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
-        let user = await userModel.findOne({ email: email }).select("-password");
+        let user = await userModel.findOne({ email: decoded.email });
 
         req.user = user;
         next();
-         res.redirect("/login");
+        //  res.redirect("/login");
     }
     catch (err) {
         req.flash("error", "something went wrong");

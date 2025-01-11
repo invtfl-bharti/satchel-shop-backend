@@ -6,9 +6,9 @@ const router = express.Router();
 // console.log("Current Environment:", process.env.NODE_ENV);
 
 // GET route for "/"
-router.get("/", function (req, res) {
-  res.send("It's working");
-});
+// router.get("/", function (req, res) {
+//   res.send("It's working");
+// });
 
 // POST route for "/create", only in development
 if (process.env.NODE_ENV === "development") {
@@ -27,5 +27,11 @@ if (process.env.NODE_ENV === "development") {
        res.status(201).send(createOwner);
   });
 }
+
+
+router.get("/admin", function (req, res) {
+  let success = req.flash("success");
+  res.render("createproducts",{success})
+})
 
 module.exports = router;

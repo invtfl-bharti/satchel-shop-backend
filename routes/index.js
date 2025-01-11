@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const isLoggedIn = require("../middlewares/isLoggedIn");
+const {
+  registerUser,
+  loginUser,
+  logout,
+} = require("../controllers/authController");
 
 // router.get("/", async (req, res) => {
 //   const { email } = req.body;
@@ -24,8 +29,11 @@ router.get("/", (req, res) => {
   res.render("index", { error });
 });
 
-router.get("/shop", isLoggedIn, function (req, res) {
+router.post("/shop", isLoggedIn, function (req, res) {
     res.render("shop");
 })
+
+
+// router.post("/login", loginUser);
 
 module.exports = router;
