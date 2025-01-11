@@ -7,6 +7,7 @@ const {
   loginUser,
   logout,
 } = require("../controllers/authController");
+const productModel = require('../models/product-model');
 
 // router.get("/", async (req, res) => {
 //   const { email } = req.body;
@@ -29,8 +30,9 @@ router.get("/", (req, res) => {
   res.render("index", { error });
 });
 
-router.post("/shop", isLoggedIn, function (req, res) {
-    res.render("shop");
+router.get("/shop", isLoggedIn, async function (req, res) {
+  let products = await productModel.find()
+    res.render("shop",{products});
 })
 
 
