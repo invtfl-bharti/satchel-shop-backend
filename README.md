@@ -50,33 +50,3 @@
    ````bash
    git clone https://github.com/your-username/heavenly.git
    cd heavenly
-
-    ```bash
-        npm install
-
-    ```bash
-        PORT=3000
-        MONGO_URI=your_mongodb_connection_string
-        SESSION_SECRET=your_secret_key
-
-    ````bash
-        npm start
-
-
-### Project Structure
-
-    heavenly/
-
-├── config/
-│ └── mongoose-connection.js # MongoDB connection setup
-├── routes/
-│ ├── ownersRouter.js # Routes for owner operations
-│ ├── usersRouter.js # Routes for user operations
-│ ├── productsRouter.js # Routes for product management
-│ └── index.js # General routes
-├── views/ # EJS templates
-├── public/ # Static assets (CSS, JS, Images)
-├── node_modules/ # Installed dependencies
-├── .env # Environment variables
-├── package.json # Project metadata
-└── server.js # Entry point for the application
